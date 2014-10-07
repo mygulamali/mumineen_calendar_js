@@ -40,6 +40,10 @@
 #   activate :livereload
 # end
 
+configure :development do
+  activate :jasmine
+end
+
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper
