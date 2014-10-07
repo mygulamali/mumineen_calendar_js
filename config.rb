@@ -47,11 +47,9 @@
 #   end
 # end
 
-set :css_dir, 'stylesheets'
-
-set :js_dir, 'javascripts'
-
-set :images_dir, 'images'
+set :css_dir, 'assets/stylesheets'
+set :images_dir, 'assets/images'
+set :js_dir, 'assets/javascripts'
 
 # Build-specific configuration
 configure :build do
@@ -65,7 +63,7 @@ configure :build do
   # activate :asset_hash
 
   # Use relative URLs
-  # activate :relative_assets
+  activate :relative_assets
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
