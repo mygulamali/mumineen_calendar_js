@@ -7,6 +7,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    angularjs-rails (1.2.25)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     chunky_png (1.3.1)
@@ -123,6 +124,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angularjs-rails
   middleman (~> 3.3.6)
   middleman-livereload (~> 3.1.0)
   tzinfo-data

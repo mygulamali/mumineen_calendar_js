@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 ruby '2.1.3'
 gem "middleman", "~>3.3.6"
 
+gem "angularjs-rails"
+
 group :development do
   gem "middleman-livereload", "~> 3.1.0"
 end
