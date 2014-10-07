@@ -19,7 +19,9 @@
   </head>
 
   <body class="<%= page_classes %>">
+    <%= partial 'layouts/header' %>
     <%= yield %>
-    <%= javascript_include_tag  "all" %>
+
+    <%= javascript_include_tag "all" %>
   </body>
 </html>
