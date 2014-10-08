@@ -20,6 +20,18 @@ var HijriDate = (function () {
     this.day = day;
   };
 
+  hijriDate.prototype.getYear = function () {
+    return this.year;
+  };
+
+  hijriDate.prototype.getMonth = function () {
+    return this.month;
+  };
+
+  hijriDate.prototype.getDate = function () {
+    return this.day;
+  };
+
   // is the specified Gregorian Date object a Julian date?
   hijriDate.isJulian = function (date) {
     if (date.getFullYear() < 1582) {
