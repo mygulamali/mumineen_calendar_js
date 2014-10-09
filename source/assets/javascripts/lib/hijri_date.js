@@ -37,9 +37,9 @@ var HijriDate = (function () {
     if (date.getFullYear() < 1582) {
       return true;
     } else if (date.getFullYear() === 1582) {
-      if (date.getMonth() < 10) {
+      if (date.getMonth() < 9) {
         return true;
-      } else if (date.getMonth() === 10) {
+      } else if (date.getMonth() === 9) {
         if (date.getDate() < 5) {
           return true;
         }
@@ -52,7 +52,7 @@ var HijriDate = (function () {
   hijriDate.gregorianToAJD = function (date) {
     var a, b,
         year = date.getFullYear(),
-        month = date.getMonth(),
+        month = date.getMonth() + 1,
         day = date.getDate()
             + date.getHours()/24
             + date.getMinutes()/1440
@@ -95,7 +95,7 @@ var HijriDate = (function () {
     msc = (sec - Math.floor(sec))*1000;
     month = (e < 14) ? (e - 2) : (e - 14);
     year = (month < 2) ? (c - 4715) : (c - 4716);
-    return new Date(year, month + 1, day, hrs, min, sec, msc);
+    return new Date(year, month, day, hrs, min, sec, msc);
   };
 
   // is the specified Hijri year a Kabisa year?
@@ -110,12 +110,12 @@ var HijriDate = (function () {
 
   // return number of days in the specified Hijri year and month
   hijriDate.daysInMonth = function (year, month) {
-    return ((month === 12) && (hijriDate.isKabisa(year)) || (month % 2 === 1)) ? 30 : 29;
+    return ((month === 11) && (hijriDate.isKabisa(year)) || (month % 2 === 0)) ? 30 : 29;
   };
 
   // return day of Hijri year corresponding to this Hijri Date object
   hijriDate.prototype.dayOfYear = function () {
-    return (this.month === 1) ? this.day : (DAYS_IN_YEAR[this.month - 2] + this.day);
+    return (this.month === 0) ? this.day : (DAYS_IN_YEAR[this.month - 1] + this.day);
   };
 
   // return Hijri Date object corresponding to specified Astronomical Julian Date
@@ -140,7 +140,7 @@ var HijriDate = (function () {
     while (left > DAYS_IN_YEAR[i]) {
       i += 1;
     }
-    month = Math.round(i + 1);
+    month = Math.round(i);
     date = (i > 0) ? Math.round(left - DAYS_IN_YEAR[i - 1]) : Math.round(left);
 
     return new hijriDate(year, month, date);
