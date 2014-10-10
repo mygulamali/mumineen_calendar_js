@@ -4,6 +4,8 @@ var HijriCalendar = (function () {
   var MIN_CALENDAR_YEAR = 1000,
       MAX_CALENDAR_YEAR = 3000;
 
+  // public
+
   var hijriCalendar = function (year, month, iso8601) {
     this.year = year;
     this.month = month;
@@ -37,6 +39,16 @@ var HijriCalendar = (function () {
     return (hijriDate.toAJD() + offset) % 7;
   };
 
+  // return array of days of this month and year
+  hijriCalendar.prototype.days = function () {
+    var self = this;
+    return Lazy.generate(function (day) {
+      var hijriDate = new HijriDate(self.year, self.month, day + 1),
+          gregorianDate = hijriDate.toGregorian();
+      return dayHash(hijriDate, gregorianDate);
+    }, HijriDate.daysInMonth(this.year, this.month)).toArray();
+  };
+
   // return Hijri Calendar object for the previous month
   hijriCalendar.prototype.previousMonth = function () {
     var year = (this.month === 0) ? (this.year - 1) : this.year,
@@ -62,6 +74,24 @@ var HijriCalendar = (function () {
     var year = (this.year === MAX_CALENDAR_YEAR) ? MAX_CALENDAR_YEAR : (this.year + 1);
     return new hijriCalendar(year, this.month);
   };
+
+  // private
+
+  function dayHash (hijriDate, gregorianDate) {
+    return {
+      hijri: {
+        year: hijriDate.getYear(),
+        month: hijriDate.getMonth(),
+        date: hijriDate.getDate()
+      },
+      gregorian: {
+        year: gregorianDate.getFullYear(),
+        month: gregorianDate.getMonth(),
+        date: gregorianDate.getDate()
+      },
+      ajd: hijriDate.toAJD()
+    };
+  }
 
   return hijriCalendar;
 })();

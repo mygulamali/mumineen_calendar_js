@@ -18,6 +18,40 @@
       });
     });
 
+    describe("days", function () {
+      var calendar,
+          days;
+
+      beforeEach(function () {
+        calendar = new HijriCalendar(1432, 4);
+        days = calendar.days();
+      });
+
+      it("expects to return an array of days for this month and year", function () {
+        expect(Array.isArray(days)).toBeTruthy();
+      });
+
+      it("expects each day object to contain specific data", function () {
+        days.forEach(function (day) {
+          expect(day.hijri.year).toBeDefined();
+          expect(day.hijri.month).toBeDefined();
+          expect(day.hijri.date).toBeDefined();
+          expect(day.gregorian.year).toBeDefined();
+          expect(day.gregorian.month).toBeDefined();
+          expect(day.gregorian.date).toBeDefined();
+          expect(day.ajd).toBeDefined();
+        });
+      });
+
+      it("expects the first day in the array to correspond to the first day of the month", function () {
+        expect(days[0].hijri.date).toBe(1);
+      });
+
+      it("expects the last day in the array to correspond to the last day of the month", function () {
+        expect(days[days.length - 1].hijri.date).toBe(days.length);
+      });
+    });
+
     describe("previousMonth", function () {
       describe("when the month is greater than 0", function () {
         it("expects to subtract 1 from the month", function () {
