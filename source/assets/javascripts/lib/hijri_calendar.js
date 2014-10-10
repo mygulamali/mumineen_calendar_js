@@ -4,9 +4,10 @@ var HijriCalendar = (function () {
   var MIN_CALENDAR_YEAR = 1000,
       MAX_CALENDAR_YEAR = 3000;
 
-  var hijriCalendar = function (year, month) {
+  var hijriCalendar = function (year, month, iso8601) {
     this.year = year;
     this.month = month;
+    this.iso8601 = iso8601 ? iso8601 : false;
   };
 
   hijriCalendar.prototype.getYear = function () {
@@ -17,12 +18,23 @@ var HijriCalendar = (function () {
     return this.month;
   };
 
+  hijriCalendar.prototype.isISO = function () {
+    return this.iso8601;
+  };
+
   hijriCalendar.getMinYear = function () {
     return MIN_CALENDAR_YEAR;
   };
 
   hijriCalendar.getMaxYear = function () {
     return MAX_CALENDAR_YEAR;
+  };
+
+  // return day of week for the specified date
+  hijriCalendar.prototype.dayOfWeek = function (date) {
+    var hijriDate = new HijriDate(this.year, this.month, date),
+        offset = this.iso8601 ? -0.5 : 0.5;
+    return (hijriDate.toAJD() + offset) % 7;
   };
 
   // return Hijri Calendar object for the previous month

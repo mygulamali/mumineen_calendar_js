@@ -2,6 +2,22 @@
   "use strict";
 
   describe("HijriCalendar", function () {
+    describe("dayOfWeek", function () {
+      describe("when the first day of the week is Sunday", function () {
+        it("expects 4th Rabi al-Aakhar 1432H to be on Friday", function () {
+          var calendar = new HijriCalendar(1432, 4);
+          expect(calendar.dayOfWeek(20)).toBe(5);
+        });
+      });
+
+      describe("when the first day of the week is Monday", function () {
+        it("expects 4th Rabi al-Aakhar 1432H to be on Friday", function () {
+          var calendar = new HijriCalendar(1432, 4, true);
+          expect(calendar.dayOfWeek(20)).toBe(4);
+        });
+      });
+    });
+
     describe("previousMonth", function () {
       describe("when the month is greater than 0", function () {
         it("expects to subtract 1 from the month", function () {
