@@ -27,7 +27,7 @@
     describe("gregorianToAJD", function () {
       it("expects 25th March 2011 to be AJD 2455645.5", function () {
         var date = new Date(2011, 2, 25);
-        expect(HijriDate.gregorianToAJD(date)).toEqual(2455645.5);
+        expect(HijriDate.gregorianToAJD(date)).toBe(2455645.5);
       });
     });
 
@@ -50,32 +50,32 @@
 
     describe("daysInMonth", function () {
       it("expects Ramazaan 1432H to contain 30 days", function () {
-        expect(HijriDate.daysInMonth(1432, 8)).toEqual(30);
+        expect(HijriDate.daysInMonth(1432, 8)).toBe(30);
       });
 
       it("expects Zilhaj 1432H to contain 29 days", function () {
-        expect(HijriDate.daysInMonth(1432, 11)).toEqual(29);
+        expect(HijriDate.daysInMonth(1432, 11)).toBe(29);
       });
 
       it("expects Zilhaj 1434H to contain 30 days", function () {
-        expect(HijriDate.daysInMonth(1434, 11)).toEqual(30);
+        expect(HijriDate.daysInMonth(1434, 11)).toBe(30);
       });
     });
 
     describe("dayOfYear", function () {
       it("expects 10th Moharram 1432H to be the 10th day of the year", function () {
         var date = new HijriDate(1432, 0, 10);
-        expect(date.dayOfYear()).toEqual(10);
+        expect(date.dayOfYear()).toBe(10);
       });
 
       it("expects 10th Ramazaan 1432H to be the 246th day of the year", function () {
         var date = new HijriDate(1432, 8, 10);
-        expect(date.dayOfYear()).toEqual(246);
+        expect(date.dayOfYear()).toBe(246);
       });
 
       it("expects 30th Zilhaj 1434H to be the 355th day of the year", function () {
         var date = new HijriDate(1434, 11, 30);
-        expect(date.dayOfYear()).toEqual(355);
+        expect(date.dayOfYear()).toBe(355);
       });
     });
 
@@ -89,7 +89,7 @@
     describe("toAJD", function () {
       it("expects 20th Rabi al-Aakhar 1432H to be AJD 2455645.5", function () {
         var date = new HijriDate(1432, 3, 20);
-        expect(date.toAJD()).toEqual(2455645.5);
+        expect(date.toAJD()).toBe(2455645.5);
       });
     });
 
