@@ -4,15 +4,15 @@
   describe("HijriCalendar", function () {
     describe("dayOfWeek", function () {
       describe("when the first day of the week is Sunday", function () {
-        it("expects 4th Rabi al-Aakhar 1432H to be on Friday", function () {
-          var calendar = new HijriCalendar(1432, 4);
+        it("expects 20th Rabi al-Aakhar 1432H to be on Friday", function () {
+          var calendar = new HijriCalendar(1432, 3);
           expect(calendar.dayOfWeek(20)).toBe(5);
         });
       });
 
       describe("when the first day of the week is Monday", function () {
-        it("expects 4th Rabi al-Aakhar 1432H to be on Friday", function () {
-          var calendar = new HijriCalendar(1432, 4, true);
+        it("expects 20th Rabi al-Aakhar 1432H to be on Friday", function () {
+          var calendar = new HijriCalendar(1432, 3, true);
           expect(calendar.dayOfWeek(20)).toBe(4);
         });
       });

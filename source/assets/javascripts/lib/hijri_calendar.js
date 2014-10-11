@@ -35,7 +35,7 @@ var HijriCalendar = (function () {
   // return day of week for the specified date
   hijriCalendar.prototype.dayOfWeek = function (date) {
     var hijriDate = new HijriDate(this.year, this.month, date),
-        offset = this.iso8601 ? -0.5 : 0.5;
+        offset = this.iso8601 ? 0.5 : 1.5;
     return (hijriDate.toAJD() + offset) % 7;
   };
 
