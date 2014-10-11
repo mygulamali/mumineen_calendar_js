@@ -66,6 +66,23 @@ var HijriCalendar = (function () {
     }, dayAtStartOfMonth).toArray();
   };
 
+  // return array of days from end of this month and year until end of the week
+  hijriCalendar.prototype.nextDays = function () {
+    var nextMonth = this.nextMonth(),
+        daysInMonth = HijriDate.daysInMonth(this.year, this.month),
+        dayAtEndOfMonth = this.dayOfWeek(daysInMonth);
+
+    return Lazy.generate(function (day) {
+      var hijriDate = new HijriDate(
+            nextMonth.getYear(),
+            nextMonth.getMonth(),
+            day + 1
+          ),
+          gregorianDate = hijriDate.toGregorian();
+      return dayHash(hijriDate, gregorianDate);
+    }, 6 - dayAtEndOfMonth).toArray();
+  };
+
   // return Hijri Calendar object for the previous month
   hijriCalendar.prototype.previousMonth = function () {
     var year = (this.month === 0) ? (this.year - 1) : this.year,
