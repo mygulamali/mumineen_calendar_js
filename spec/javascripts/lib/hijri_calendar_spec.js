@@ -52,6 +52,80 @@
       });
     });
 
+    describe("previousDays", function () {
+      describe("when the first day of the week is Sunday", function () {
+        describe("when the month begins on a Sunday", function () {
+          it("expects to return an empty array", function () {
+            var calendar = new HijriCalendar(1432, 3);
+            expect(calendar.previousDays()).toEqual([]);
+          });
+        });
+
+        describe("when the month doesn't begin on a Sunday", function () {
+          var calendar,
+              previousMonth,
+              days;
+
+          beforeEach(function () {
+            calendar = new HijriCalendar(1432, 5);
+            previousMonth = calendar.previousMonth();
+            days = calendar.previousDays();
+          });
+
+          it("expects to return an array of days from the previous month", function () {
+            days.forEach(function (day) {
+              expect(day.hijri.month).toBe(previousMonth.getMonth());
+            });
+          });
+
+          it("expects to return an array of days beginning on Sunday", function () {
+            expect(previousMonth.dayOfWeek(days[0].hijri.date)).toBe(0);
+          });
+
+          it("expects to return an array of days ending the day before this month begins", function () {
+            var lastDay = previousMonth.dayOfWeek(days[days.length - 1].hijri.date);
+            expect(lastDay).toBe(calendar.dayOfWeek(1) - 1);
+          });
+        });
+      });
+
+      describe("when the first day of the week is Monday", function () {
+        describe("when the month begins on a Monday", function () {
+          it("expects to return an empty array", function () {
+            var calendar = new HijriCalendar(1432, 4, true);
+            expect(calendar.previousDays()).toEqual([]);
+          });
+        });
+
+        describe("when the month doesn't begin on a Monday", function () {
+          var calendar,
+              previousMonth,
+              days;
+
+          beforeEach(function () {
+            calendar = new HijriCalendar(1432, 5, true);
+            previousMonth = calendar.previousMonth();
+            days = calendar.previousDays();
+          });
+
+          it("expects to return an array of days from the previous month", function () {
+            days.forEach(function (day) {
+              expect(day.hijri.month).toBe(previousMonth.getMonth());
+            });
+          });
+
+          it("expects to return an array of days beginning on Monday", function () {
+            expect(previousMonth.dayOfWeek(days[0].hijri.date)).toBe(0);
+          });
+
+          it("expects to return an array of days ending the day before this month begins", function () {
+            var lastDay = previousMonth.dayOfWeek(days[days.length - 1].hijri.date);
+            expect(lastDay).toBe(calendar.dayOfWeek(1) - 1);
+          });
+        });
+      });
+    });
+
     describe("previousMonth", function () {
       describe("when the month is greater than 0", function () {
         it("expects to subtract 1 from the month", function () {

@@ -49,6 +49,23 @@ var HijriCalendar = (function () {
     }, HijriDate.daysInMonth(this.year, this.month)).toArray();
   };
 
+  // return array of days from beginning of week until start of this month and year
+  hijriCalendar.prototype.previousDays = function () {
+    var previousMonth = this.previousMonth(),
+        daysInPreviousMonth = HijriDate.daysInMonth(previousMonth.getYear(), previousMonth.getMonth()),
+        dayAtStartOfMonth = this.dayOfWeek(1);
+
+    return Lazy.generate(function (day) {
+      var hijriDate = new HijriDate(
+            previousMonth.getYear(),
+            previousMonth.getMonth(),
+            daysInPreviousMonth - dayAtStartOfMonth + day + 1
+          ),
+          gregorianDate = hijriDate.toGregorian();
+      return dayHash(hijriDate, gregorianDate);
+    }, dayAtStartOfMonth).toArray();
+  };
+
   // return Hijri Calendar object for the previous month
   hijriCalendar.prototype.previousMonth = function () {
     var year = (this.month === 0) ? (this.year - 1) : this.year,
