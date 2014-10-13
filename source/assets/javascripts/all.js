@@ -1,4 +1,4 @@
 //= require lazy
 //= require react
 //
-//= require_tree ./lib
+//= require_tree ./_lib
