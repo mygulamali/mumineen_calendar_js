@@ -1,6 +1,6 @@
 //= require angular
+//= require lazy
 //
-//= require_tree ./vendor
 //= require_tree ./lib
 //
 //= require app
