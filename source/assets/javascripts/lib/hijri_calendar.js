@@ -55,6 +55,9 @@ var HijriCalendar = (function () {
         daysInPreviousMonth = HijriDate.daysInMonth(previousMonth.getYear(), previousMonth.getMonth()),
         dayAtStartOfMonth = this.dayOfWeek(1);
 
+    if (this.month === 0 && this.year === MIN_CALENDAR_YEAR)
+      return Lazy.repeat(null, 6 - dayAtStartOfMonth).toArray();
+
     return Lazy.generate(function (day) {
       var hijriDate = new HijriDate(
             previousMonth.getYear(),
@@ -72,6 +75,9 @@ var HijriCalendar = (function () {
         daysInMonth = HijriDate.daysInMonth(this.year, this.month),
         dayAtEndOfMonth = this.dayOfWeek(daysInMonth);
 
+    if (nextMonth.getYear() === this.year && nextMonth.getMonth() === this.month)
+      return Lazy.repeat(null, 6 - dayAtEndOfMonth).toArray();
+
     return Lazy.generate(function (day) {
       var hijriDate = new HijriDate(
             nextMonth.getYear(),
@@ -85,15 +91,31 @@ var HijriCalendar = (function () {
 
   // return Hijri Calendar object for the previous month
   hijriCalendar.prototype.previousMonth = function () {
-    var year = (this.month === 0) ? (this.year - 1) : this.year,
-        month = (this.month === 0) ? 11 : (this.month - 1);
+    var year = (this.month === 0 && this.year > MIN_CALENDAR_YEAR) ? (this.year - 1) : this.year,
+        month;
+
+    if (this.month === 0 && this.year === MIN_CALENDAR_YEAR)
+      month = this.month;
+    else if (this.month === 0)
+      month = 11;
+    else
+      month = this.month - 1;
+
     return new hijriCalendar(year, month, this.iso8601);
   };
 
   // return Hijri Calendar object for the next month
   hijriCalendar.prototype.nextMonth = function () {
-    var year = (this.month === 11) ? (this.year + 1) : this.year,
-        month = (this.month === 11) ? 0 : (this.month + 1);
+    var year = (this.month === 11 && this.year < MAX_CALENDAR_YEAR) ? (this.year + 1) : this.year,
+        month;
+
+    if (this.month === 11 && this.year === MAX_CALENDAR_YEAR)
+      month = this.month;
+    else if (this.month === 11)
+      month = 0;
+    else
+      month = this.month + 1;
+
     return new hijriCalendar(year, month, this.iso8601);
   };
 

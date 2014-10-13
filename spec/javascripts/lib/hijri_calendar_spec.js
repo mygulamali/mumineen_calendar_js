@@ -124,6 +124,31 @@
           });
         });
       });
+
+      describe("when the month is 0 and the year is MIN_CALENDAR_YEAR", function () {
+        var calendar,
+            days;
+
+        beforeEach(function () {
+          calendar = new HijriCalendar(HijriCalendar.getMinYear(), 0);
+          days = calendar.previousDays();
+        });
+
+        it("expects to return an array of NULL values or an empty array", function () {
+          if (days.length > 0) {
+            days.forEach(function (day) {
+              expect(day).toBeNull();
+            });
+          } else {
+            expect(days).toEqual([]);
+          }
+        });
+
+        it("expects to return an array with enough values to complete the week", function () {
+          var firstDay = calendar.dayOfWeek(1) + 1;
+          expect(days.length + firstDay).toBe(7);
+        });
+      });
     });
 
     describe("nextDays", function () {
@@ -198,6 +223,32 @@
           });
         });
       });
+
+      describe("when the month is 11 and the year is MAX_CALENDAR_YEAR", function () {
+        var calendar,
+            days;
+
+        beforeEach(function () {
+          calendar = new HijriCalendar(HijriCalendar.getMaxYear(), 11);
+          days = calendar.nextDays();
+        });
+
+        it("expects to return an array of NULL values or an empty array", function () {
+          if (days.length > 0) {
+            days.forEach(function (day) {
+              expect(day).toBeNull();
+            });
+          } else {
+            expect(days).toEqual([]);
+          }
+        });
+
+        it("expects to return an array with enough values to complete the week", function () {
+          var daysInMonth = HijriDate.daysInMonth(calendar.getYear(), calendar.getMonth()),
+              lastDay = calendar.dayOfWeek(daysInMonth) + 1;
+          expect(lastDay + days.length).toBe(7);
+        });
+      });
     });
 
     describe("previousMonth", function () {
@@ -223,6 +274,22 @@
           expect(calendar.getYear()).toBe(1431);
         });
       });
+
+      describe("when the month is 0 and the year is MIN_CALENDAR_YEAR", function () {
+        var calendar;
+
+        beforeEach(function () {
+          calendar = (new HijriCalendar(HijriCalendar.getMinYear(), 0)).previousMonth();
+        });
+
+        it("expects the month to stay the same", function () {
+          expect(calendar.getMonth()).toBe(0);
+        });
+
+        it("expects the year to stay the same", function () {
+          expect(calendar.getYear()).toBe(HijriCalendar.getMinYear());
+        });
+      });
     });
 
     describe("nextMonth", function () {
@@ -246,6 +313,22 @@
 
         it("expects to add 1 to the year", function () {
           expect(calendar.getYear()).toBe(1433);
+        });
+      });
+
+      describe("when the month is 11 and the year is MAX_CALENDAR_YEAR", function () {
+        var calendar;
+
+        beforeEach(function () {
+          calendar = (new HijriCalendar(HijriCalendar.getMaxYear(), 11)).nextMonth();
+        });
+
+        it("expects the month to stay the same", function () {
+          expect(calendar.getMonth()).toBe(11);
+        });
+
+        it("expects the year to stay the same", function () {
+          expect(calendar.getYear()).toBe(HijriCalendar.getMaxYear());
         });
       });
     });
