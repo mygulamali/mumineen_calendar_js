@@ -2,14 +2,19 @@
 var CalendarFrame = React.createClass({
   render: function () {
     return (
-      <div className="calendar-frame">
-        This is the calendar frame.
+      <div className="calendarFrame">
+        <YearControls />
+        <TodayButton />
+        <MonthControls />
+        <Calendar />
       </div>
     );
   }
 });
 
-React.renderComponent(
-  <CalendarFrame />,
-  document.getElementsByTagName('main').item(0)
-);
+if (document.getElementsByTagName('main').length > 0) {
+  React.renderComponent(
+    <CalendarFrame />,
+    document.getElementsByTagName('main').item(0)
+  );
+}
