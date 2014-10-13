@@ -84,6 +84,10 @@ GEM
       middleman-core (>= 3.0.2)
       multi_json (~> 1.0)
       rack-livereload
+    middleman-react (0.11.1)
+      execjs
+      middleman-core (>= 3.0)
+      react-source (~> 0.11.1)
     middleman-sprockets (3.3.10)
       middleman-core (~> 3.3)
       sprockets (~> 2.12.1)
@@ -107,6 +111,7 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
+    react-source (0.11.1)
     sass (3.4.5)
     sprockets (2.12.2)
       hike (~> 1.2)
@@ -137,5 +142,6 @@ DEPENDENCIES
   middleman (~> 3.3.6)
   middleman-jasmine
   middleman-livereload (~> 3.1.0)
+  middleman-react
   tzinfo-data
   wdm (~> 0.1.0)

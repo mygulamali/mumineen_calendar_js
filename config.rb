@@ -55,7 +55,7 @@ set :css_dir, 'assets/stylesheets'
 set :images_dir, 'assets/images'
 set :js_dir, 'assets/javascripts'
 
-sprockets.append_path '/vendor/assets/'
+activate :react
 
 # Build-specific configuration
 configure :build do
@@ -73,4 +73,9 @@ configure :build do
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
+end
+
+after_configuration do
+  sprockets.append_path '/vendor/assets/'
+  sprockets.append_path File.dirname(::React::Source.bundled_path_for('react.js'))
 end
