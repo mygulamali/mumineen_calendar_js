@@ -3,10 +3,10 @@ var CalendarFrame = React.createClass({
   render: function () {
     return (
       <div className="calendarFrame">
-        <YearControls year={this.props.year} />
+        <YearControls year={this.props.today.getYear()} />
         <TodayButton />
-        <MonthControls year={this.props.year} month={this.props.month} />
-        <Calendar year={this.props.year} month={this.props.month} />
+        <MonthControls year={this.props.today.getYear()} month={this.props.today.getMonth()} />
+        <Calendar year={this.props.today.getYear()} month={this.props.today.getMonth()} />
       </div>
     );
   }
@@ -14,7 +14,7 @@ var CalendarFrame = React.createClass({
 
 if (document.getElementsByTagName('main').length > 0) {
   React.renderComponent(
-    <CalendarFrame year="1435" month="11" />,
+    <CalendarFrame today={HijriDate.fromGregorian(new Date())} />,
     document.getElementsByTagName('main').item(0)
   );
 }
