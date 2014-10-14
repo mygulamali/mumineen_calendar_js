@@ -1,13 +1,6 @@
 //= require lazy
 //= require react
 //
-//= require _lib/hijri_date
-//= require _lib/hijri_calendar
-//
-//= require _components/year_controls
-//= require _components/month_controls
-//= require _components/today_button
-//= require _components/calendar_day
-//= require _components/calendar_week
-//= require _components/calendar
-//= require _components/calendar_frame
+//= require_tree ./_lib
+//= require_tree ./_components
+//= require app
