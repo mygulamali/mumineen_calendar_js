@@ -14,6 +14,42 @@ var HijriDate = (function () {
     7441, 7796, 8150, 8504, 8859, 9213, 9567, 9922, 10276, 10631
   ];
 
+  // month names
+  var MONTH_NAMES = {
+    long: {
+      en: [
+        "Moharram al-Haraam",
+        "Safar al-Muzaffar",
+        "Rabi al-Awwal",
+        "Rabi al-Aakhar",
+        "Jumada al-Ula",
+        "Jumada al-Ukhra",
+        "Rajab al-Asab",
+        "Shabaan al-Karim",
+        "Ramadaan al-Moazzam",
+        "Shawwal al-Mukarram",
+        "Zilqadah al-Haraam",
+        "Zilhaj al-Haraam"
+      ]
+    },
+    short: {
+      en: [
+        "Moharram",
+        "Safar",
+        "Rabi I",
+        "Rabi II",
+        "Jumada I",
+        "Jumada II",
+        "Rajab",
+        "Shabaan",
+        "Ramadaan",
+        "Shawwal",
+        "Zilqadah",
+        "Zilhaj"
+      ]
+    }
+  };
+
   var hijriDate = function (year, month, day) {
     this.year = year;
     this.month = month;
@@ -30,6 +66,14 @@ var HijriDate = (function () {
 
   hijriDate.prototype.getDate = function () {
     return this.day;
+  };
+
+  hijriDate.getMonthName = function (month) {
+    return MONTH_NAMES.long.en[month];
+  };
+
+  hijriDate.getShortMonthName = function (month) {
+    return MONTH_NAMES.short.en[month];
   };
 
   // is the specified Gregorian Date object a Julian date?
