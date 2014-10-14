@@ -4,9 +4,9 @@ var MonthControls = React.createClass({
     var monthName = HijriDate.getMonthName(this.props.month);
     return (
       <div className="monthControls">
-        <a href="#">Prev</a>
-        <h3>{ monthName }</h3>
-        <a href="#">Next</a>
+        <button onClick={this.props.previousMonth}>Prev</button>
+        <h3>{monthName}</h3>
+        <button onClick={this.props.nextMonth}>Next</button>
       </div>
     );
   }
