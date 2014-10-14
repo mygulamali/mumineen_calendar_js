@@ -3,7 +3,7 @@ var TodayButton = React.createClass({
   render: function () {
     return (
       <div className="todayButton">
-        <a href="#">Today</a>
+        <button onClick={this.props.today}>Today</button>
       </div>
     );
   }

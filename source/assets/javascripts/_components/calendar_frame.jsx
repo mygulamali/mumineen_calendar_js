@@ -5,6 +5,11 @@ var CalendarFrame = React.createClass({
       calendar: new HijriCalendar(this.props.today.getYear(), this.props.today.getMonth())
     };
   },
+  thisMonth: function () {
+    this.setState({
+      calendar: new HijriCalendar(this.props.today.getYear(), this.props.today.getMonth())
+    });
+  },
   previousMonth: function () {
     this.setState({
       calendar: this.state.calendar.previousMonth()
@@ -33,7 +38,7 @@ var CalendarFrame = React.createClass({
           previousYear={this.previousYear}
           nextYear={this.nextYear}
         />
-        <TodayButton today={this.props.today} />
+        <TodayButton today={this.thisMonth} />
         <MonthControls
           month={this.state.calendar.getMonth()}
           previousMonth={this.previousMonth}
