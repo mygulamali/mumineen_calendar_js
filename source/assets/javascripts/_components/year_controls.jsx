@@ -5,7 +5,7 @@ var YearControls = React.createClass({
       <div className="yearControls">
         <h2>
           <a href="#">Prev</a>
-          1435H
+          {this.props.year}H
           <a href="#">Next</a>
         </h2>
       </div>
