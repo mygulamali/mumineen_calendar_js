@@ -1,12 +1,11 @@
 /** @jsx React.DOM */
 var Calendar = React.createClass({
   render: function () {
-    var calendar = new HijriCalendar(this.props.year, this.props.month),
-        index = 0;
+    var index = -1,
         weeks = Lazy([]).concat(
-          calendar.previousDays(),
-          calendar.days(),
-          calendar.nextDays()
+          this.props.calendar.previousDays(),
+          this.props.calendar.days(),
+          this.props.calendar.nextDays()
         ).chunk(7).map(function (week) {
           index += 1;
           return (
