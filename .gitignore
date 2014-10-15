@@ -19,3 +19,7 @@
 
 # Ignore tmp directory
 /tmp
+
+# Ignore vendor style files
+/source/assets/stylesheets/bourbon
+/source/assets/stylesheets/neat
