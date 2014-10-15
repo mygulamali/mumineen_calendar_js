@@ -5,29 +5,19 @@ var CalendarFrame = React.createClass({
       calendar: new HijriCalendar(this.props.today.getYear(), this.props.today.getMonth())
     };
   },
-  thisMonth: function () {
+  navigateToToday: function () {
     this.setState({
       calendar: new HijriCalendar(this.props.today.getYear(), this.props.today.getMonth())
     });
   },
-  previousMonth: function () {
+  changeMonth: function (monthChange) {
     this.setState({
-      calendar: this.state.calendar.previousMonth()
+      calendar: (monthChange < 0) ? this.state.calendar.previousMonth() : this.state.calendar.nextMonth()
     });
   },
-  nextMonth: function () {
+  changeYear: function (yearChange) {
     this.setState({
-      calendar: this.state.calendar.nextMonth()
-    });
-  },
-  previousYear: function () {
-    this.setState({
-      calendar: this.state.calendar.previousYear()
-    });
-  },
-  nextYear: function () {
-    this.setState({
-      calendar: this.state.calendar.nextYear()
+      calendar: (yearChange < 0) ? this.state.calendar.previousYear() : this.state.calendar.nextYear()
     });
   },
   render: function () {
@@ -35,14 +25,12 @@ var CalendarFrame = React.createClass({
       <div className="calendarFrame">
         <YearControls
           year={this.state.calendar.getYear()}
-          previousYear={this.previousYear}
-          nextYear={this.nextYear}
+          onYearChange={this.changeYear}
         />
-        <TodayButton today={this.thisMonth} />
+        <TodayButton onClick={this.navigateToToday} />
         <MonthControls
           month={this.state.calendar.getMonth()}
-          previousMonth={this.previousMonth}
-          nextMonth={this.nextMonth}
+          onMonthChange={this.changeMonth}
         />
         <Calendar calendar={this.state.calendar} />
       </div>

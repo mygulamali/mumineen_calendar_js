@@ -4,9 +4,9 @@ var YearControls = React.createClass({
     return (
       <div className="yearControls">
         <h2>
-          <button onClick={this.props.previousYear}>Prev</button>
+          <button onClick={this.props.onYearChange.bind(null, -1)}>Prev</button>
           {this.props.year}H
-          <button onClick={this.props.nextYear}>Next</button>
+          <button onClick={this.props.onYearChange.bind(null, +1)}>Next</button>
         </h2>
       </div>
     );
