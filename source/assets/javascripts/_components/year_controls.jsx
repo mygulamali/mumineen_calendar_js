@@ -2,12 +2,14 @@
 var YearControls = React.createClass({
   render: function () {
     return (
-      <div className="yearControls">
-        <h2>
-          <button onClick={this.props.onYearChange.bind(null, -1)}>Prev</button>
-          {this.props.year}H
-          <button onClick={this.props.onYearChange.bind(null, +1)}>Next</button>
-        </h2>
+      <div className="year-controls">
+        <a href="#" onClick={this.props.onYearChange.bind(null, -1)}>
+          <i className="icon-minus-sign"></i>
+        </a>
+        <h2>{this.props.year}H</h2>
+        <a href="#" onClick={this.props.onYearChange.bind(null, +1)}>
+          <i className="icon-plus-sign"></i>
+        </a>
       </div>
     );
   }
