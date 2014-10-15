@@ -22,16 +22,20 @@ var CalendarFrame = React.createClass({
   },
   render: function () {
     return (
-      <div className="calendarFrame">
-        <YearControls
-          year={this.state.calendar.getYear()}
-          onYearChange={this.changeYear}
-        />
-        <TodayButton onClick={this.navigateToToday} />
-        <MonthControls
-          month={this.state.calendar.getMonth()}
-          onMonthChange={this.changeMonth}
-        />
+      <div className="calendar-frame">
+        <div className="year-row">
+          <YearControls
+            year={this.state.calendar.getYear()}
+            onYearChange={this.changeYear}
+          />
+          <TodayButton onClick={this.navigateToToday} />
+        </div>
+        <div className="month-row">
+          <MonthControls
+            month={this.state.calendar.getMonth()}
+            onMonthChange={this.changeMonth}
+          />
+        </div>
         <Calendar calendar={this.state.calendar} />
       </div>
     );

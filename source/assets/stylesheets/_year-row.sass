@@ -1,0 +1,27 @@
+.year-row
+  @include span-columns(12)
+  @include omega
+
+
+  .year-controls
+    display: inline-block
+    h2
+      display: inline-block
+      padding: 0 0.2em
+    a
+      font-size: 2em
+      line-height: 1.25em
+      &:hover
+        color: $hover-button-color
+
+    @include media(max-width $medium-screen)
+      @include span-columns(8)
+
+
+  .today-button
+    display: inline-block
+
+    @include media(max-width $medium-screen)
+      @include span-columns(4)
+      @include omega
+      text-align: right

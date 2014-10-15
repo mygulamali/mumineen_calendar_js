@@ -1,0 +1,27 @@
+.month-row
+  @include span-columns(12)
+  @include omega
+  padding-top: 1em
+
+
+  .month-controls
+    h3
+      display: inline-block
+      font-size: 1em
+      line-height: 2.5em
+      text-align: center
+
+      @include media(max-width $medium-screen)
+        @include span-columns(8)
+
+    a
+      font-size: 2em
+      line-height: 1.25em
+      &.next
+        @include omega
+        text-align: right
+      &:hover
+        color: $hover-button-color
+
+      @include media(max-width $medium-screen)
+        @include span-columns(2)
