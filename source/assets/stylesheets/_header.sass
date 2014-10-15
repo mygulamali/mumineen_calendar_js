@@ -1,0 +1,26 @@
+header
+  @include outer-container
+  padding: 1em
+  margin-bottom: 1em
+
+  h1, p
+    margin-bottom: 0
+
+  h1
+    font-size: 1.3em
+
+    @include media(min-width $medium-screen)
+      margin-top: 0.2em
+      font-size: 2.125em
+
+    @include media(min-width $large-screen)
+      font-size: 2.75em
+
+  .logo
+    float: left
+    margin:
+      top: 1em
+      right: 1em
+
+    @include media(min-width $large-screen)
+      margin-top: 1.5em
