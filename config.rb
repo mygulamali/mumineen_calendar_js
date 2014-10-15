@@ -54,6 +54,7 @@ end
 set :css_dir, 'assets/stylesheets'
 set :images_dir, 'assets/images'
 set :js_dir, 'assets/javascripts'
+set :fonts_dir, 'assets/fonts'
 
 activate :react
 
