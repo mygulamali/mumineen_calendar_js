@@ -74,7 +74,7 @@ var HijriCalendar = (function () {
             daysInPreviousMonth - dayAtStartOfMonth + day + 1
           ),
           gregorianDate = hijriDate.toGregorian();
-      return dayHash(hijriDate, gregorianDate);
+      return dayHash(hijriDate, gregorianDate, true);
     }, dayAtStartOfMonth).toArray();
   };
 
@@ -94,7 +94,7 @@ var HijriCalendar = (function () {
             day + 1
           ),
           gregorianDate = hijriDate.toGregorian();
-      return dayHash(hijriDate, gregorianDate);
+      return dayHash(hijriDate, gregorianDate, true);
     }, 6 - dayAtEndOfMonth).toArray();
   };
 
@@ -142,7 +142,7 @@ var HijriCalendar = (function () {
 
   // private
 
-  function dayHash (hijriDate, gregorianDate) {
+  function dayHash (hijriDate, gregorianDate, isFiller) {
     return {
       hijri: {
         year: hijriDate.getYear(),
@@ -154,7 +154,8 @@ var HijriCalendar = (function () {
         month: gregorianDate.getMonth(),
         date: gregorianDate.getDate()
       },
-      ajd: hijriDate.toAJD()
+      ajd: hijriDate.toAJD(),
+      filler: (isFiller) ? true : undefined
     };
   }
 

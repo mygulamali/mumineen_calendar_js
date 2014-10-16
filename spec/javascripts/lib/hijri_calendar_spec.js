@@ -180,6 +180,26 @@
           expect(days.length + firstDay).toBe(7);
         });
       });
+
+      describe("irrespective of the first day of the week, month or year", function () {
+        var calendar,
+            days;
+
+        beforeEach(function () {
+          calendar = new HijriCalendar(1432, 11);
+          days = calendar.previousDays();
+        });
+
+        it("expects each day to have a 'filler' attribute", function () {
+          if (days.length > 0) {
+            days.forEach(function (day) {
+              expect(day.filler).toBeDefined();
+            });
+          } else {
+            expect(days).toEqual([]);
+          }
+        });
+      });
     });
 
     describe("nextDays", function () {
@@ -278,6 +298,26 @@
           var daysInMonth = HijriDate.daysInMonth(calendar.getYear(), calendar.getMonth()),
               lastDay = calendar.dayOfWeek(daysInMonth) + 1;
           expect(lastDay + days.length).toBe(7);
+        });
+      });
+
+      describe("irrespective of the first day of the week, month or year", function () {
+        var calendar,
+            days;
+
+        beforeEach(function () {
+          calendar = new HijriCalendar(1432, 11);
+          days = calendar.nextDays();
+        });
+
+        it("expects each day to have a 'filler' attribute", function () {
+          if (days.length > 0) {
+            days.forEach(function (day) {
+              expect(day.filler).toBeDefined();
+            });
+          } else {
+            expect(days).toEqual([]);
+          }
         });
       });
     });
