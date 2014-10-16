@@ -1,10 +1,12 @@
 .year-row
   @include span-columns(12)
   @include omega
+  text-align: center
 
 
   .year-controls
     display: inline-block
+    vertical-align: middle
     h2
       display: inline-block
       padding: 0 0.2em
@@ -16,12 +18,17 @@
 
     @include media(max-width $medium-screen)
       @include span-columns(8)
+      text-align: left
 
 
   .today-button
     display: inline-block
+    vertical-align: middle
 
     @include media(max-width $medium-screen)
       @include span-columns(4)
       @include omega
       text-align: right
+
+    @include media(min-width $medium-screen)
+      margin-left: 1em
