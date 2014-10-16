@@ -3,6 +3,9 @@
   @include omega
   text-align: center
 
+  @include media(min-width $large-screen)
+    font-size: 1.25em
+
 
   .year-controls
     display: inline-block
@@ -32,3 +35,6 @@
 
     @include media(min-width $medium-screen)
       margin-left: 1em
+
+    @include media(min-width $large-screen)
+      margin-left: 1.25em
