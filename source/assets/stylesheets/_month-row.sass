@@ -5,8 +5,9 @@
 
 
   .month-controls
+    @include span-columns(12)
+    @include omega
     h3
-      @include span-columns(8)
       display: inline-block
       font-size: 1em
       line-height: 2.5em
@@ -15,8 +16,14 @@
       @include media(min-width $medium-screen)
         font-size: 1.5em
 
+      @include media(max-width $large-screen)
+        @include span-columns(8)
+
+      @include media(min-width $large-screen)
+        @include span-columns(6)
+        font-size: 1.75em
+
     a
-      @include span-columns(2)
       font-size: 2em
       line-height: 1.25em
       &.next
@@ -34,3 +41,10 @@
           text-align: right
         &.next
           text-align: left
+
+      @include media(max-width $large-screen)
+        @include span-columns(2)
+
+      @include media(min-width $large-screen)
+        @include span-columns(3)
+        font-size: 2.5em
