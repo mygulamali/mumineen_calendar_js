@@ -1,11 +1,12 @@
 /** @jsx React.DOM */
 var Calendar = React.createClass({
   weeks: function () {
-    var index = -1;
+    var key = -1,
+        today = this.props.today;
     return Lazy(this.props.calendar.weeks()).map(function (week) {
-      index += 1;
+      key += 1;
       return (
-        <CalendarWeek key={index} week={week} />
+        <CalendarWeek key={key} week={week} today={today} />
       );
     }).toArray();
   },

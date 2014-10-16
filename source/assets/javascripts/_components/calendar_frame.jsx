@@ -36,7 +36,7 @@ var CalendarFrame = React.createClass({
             onMonthChange={this.changeMonth}
           />
         </div>
-        <Calendar calendar={this.state.calendar} />
+        <Calendar calendar={this.state.calendar} today={this.props.today} />
       </div>
     );
   }
