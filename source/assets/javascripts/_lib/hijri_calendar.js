@@ -49,6 +49,15 @@ var HijriCalendar = (function () {
     }, HijriDate.daysInMonth(this.year, this.month)).toArray();
   };
 
+  // return array of weeks for this month and year
+  hijriCalendar.prototype.weeks = function () {
+    return Lazy([]).concat(
+      this.previousDays(),
+      this.days(),
+      this.nextDays()
+    ).chunk(7).toArray();
+  };
+
   // return array of days from beginning of week until start of this month and year
   hijriCalendar.prototype.previousDays = function () {
     var previousMonth = this.previousMonth(),

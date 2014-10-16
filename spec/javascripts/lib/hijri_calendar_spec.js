@@ -52,6 +52,37 @@
       });
     });
 
+    describe("weeks", function () {
+      var calendar,
+          weeks;
+
+      beforeEach(function () {
+        calendar = new HijriCalendar(1432, 3);
+        weeks = calendar.weeks();
+      });
+
+      it("expects to return an array", function () {
+        expect(Array.isArray(weeks)).toBeTruthy();
+      });
+
+      it("expects the array to contain 5 or 6 weeks", function () {
+        expect(weeks.length).toBeGreaterThan(4);
+        expect(weeks.length).toBeLessThan(7);
+      });
+
+      it("expects each week in the array to be an array", function () {
+        weeks.forEach(function (week) {
+          expect(Array.isArray(week)).toBeTruthy();
+        });
+      });
+
+      it("expects each week in the array to contain 7 days", function () {
+        weeks.forEach(function (week) {
+          expect(week.length).toBe(7);
+        });
+      });
+    });
+
     describe("previousDays", function () {
       describe("when the first day of the week is Sunday", function () {
         describe("when the month begins on a Sunday", function () {
