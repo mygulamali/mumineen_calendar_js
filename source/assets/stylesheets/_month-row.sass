@@ -6,22 +6,31 @@
 
   .month-controls
     h3
+      @include span-columns(8)
       display: inline-block
       font-size: 1em
       line-height: 2.5em
       text-align: center
 
-      @include media(max-width $medium-screen)
-        @include span-columns(8)
+      @include media(min-width $medium-screen)
+        font-size: 1.5em
 
     a
+      @include span-columns(2)
       font-size: 2em
       line-height: 1.25em
       &.next
         @include omega
-        text-align: right
       &:hover
         color: $hover-button-color
 
       @include media(max-width $medium-screen)
-        @include span-columns(2)
+        &.next
+          text-align: right
+
+      @include media(min-width $medium-screen)
+        line-height: 2em
+        &.prev
+          text-align: right
+        &.next
+          text-align: left
