@@ -8,9 +8,8 @@ var CalendarDay = React.createClass({
     );
   },
   className: function () {
-    var name = "day";
+    var name = (this.props.day.filler) ? "filler" : "day";
     if (this.isToday()) name += " today";
-    if (this.props.day.filler) name += " filler";
     return name;
   },
   render: function () {

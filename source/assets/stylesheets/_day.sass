@@ -1,0 +1,23 @@
+.day
+  $background-color: #fff
+  $color: #555
+  $hover-background-color: $base-border-color
+  $hover-color: #000
+  $today-background-color: #c3f393
+  $today-hover-background-color: darken($today-background-color, 10)
+  $filler-color: $base-border-color
+
+  background-color: $background-color
+  color: $color
+  &:hover
+    background-color: $hover-background-color
+    color: $hover-color
+
+  &.today
+    background-color: $today-background-color
+    &:hover
+      background-color: $today-hover-background-color
+
+
+.filler
+  color: darken($base-border-color, 10)
