@@ -12,10 +12,13 @@ var CalendarDay = React.createClass({
     if (this.isToday()) name += " today";
     return name;
   },
+  hijriDateString: function () {
+    return ArabicNumerals.fromInteger(this.props.day.hijri.date);
+  },
   render: function () {
     return (
       <td className={this.className()}>
-        {this.props.day.hijri.date}
+        {this.hijriDateString()}
       </td>
     );
   }
