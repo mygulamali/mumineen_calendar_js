@@ -1,5 +1,5 @@
 //= require lazy
-//= require react
+//= require react-with-addons
 //
 //= require_tree ./_lib
 //= require_tree ./_components

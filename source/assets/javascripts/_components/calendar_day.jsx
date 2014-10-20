@@ -15,10 +15,28 @@ var CalendarDay = React.createClass({
   hijriDateString: function () {
     return ArabicNumerals.fromInteger(this.props.day.hijri.date);
   },
+  gregorianDateString: function () {
+    var day = this.props.day.gregorian,
+        dateString = day.date.toString();
+    if (!this.props.day.filler) {
+      if (this.props.day.hijri.date === 1 || day.date === 1) {
+        dateString += " " + Date.getShortMonthName(day.month);
+      }
+      if (this.props.day.hijri.date === 1 || (day.month === 0 && day.date === 1)) {
+        dateString += " " + day.year.toString();
+      }
+    }
+    return dateString;
+  },
   render: function () {
     return (
       <td className={this.className()}>
-        {this.hijriDateString()}
+        <div className="hijri">
+          {this.hijriDateString()}
+        </div>
+        <div className="gregorian">
+          {this.gregorianDateString()}
+        </div>
       </td>
     );
   }
