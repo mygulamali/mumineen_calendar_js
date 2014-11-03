@@ -8,9 +8,11 @@ var CalendarDay = React.createClass({
     );
   },
   className: function () {
-    var name = (this.props.day.filler) ? "filler" : "day";
-    if (this.isToday()) name += " today";
-    return name;
+    return React.addons.classSet({
+      "day": !this.props.day.filler,
+      "filler": this.props.day.filler,
+      "today": this.isToday()
+    });
   },
   hijriDateString: function () {
     return ArabicNumerals.fromInteger(this.props.day.hijri.date);
