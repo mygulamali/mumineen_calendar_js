@@ -30,9 +30,15 @@ var CalendarDay = React.createClass({
     }
     return dateString;
   },
+  onDayClick: function () {
+    if (!this.props.day.filler) {
+      this.props.onDayClick();
+    }
+    return false;
+  },
   render: function () {
     return (
-      <td className={this.className()}>
+      <td className={this.className()} onClick={this.onDayClick}>
         <div className="hijri">
           {this.hijriDateString()}
         </div>

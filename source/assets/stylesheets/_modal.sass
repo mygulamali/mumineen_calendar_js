@@ -1,0 +1,92 @@
+.modal
+  $modal-padding: 2em
+  $modal-background: $base-background-color
+  $modal-close-color: $light-gray
+
+  // overlay
+  .modal-window
+    @include transition(opacity .25s ease)
+    @include position(fixed, 0px 0px 0px 0px)
+    background: rgba(0, 0, 0, .85)
+    opacity: 0
+    text-align: left
+    visibility: hidden
+    z-index: 99999999999
+    .modal-bg
+      @include position(absolute, 0px 0px 0px 0px)
+      cursor: pointer
+
+  // close button
+  .modal-close
+    @include position(absolute, (0.5 * $modal-padding) (0.5 * $modal-padding) null null)
+    @include size(1.5em)
+    cursor: pointer
+    background: $modal-background
+    &:after,
+    &:before
+      @include position(absolute, 3px 3px null 50%)
+      @include transform(rotate(45deg))
+      @include size(.15em 1.5em)
+      background: $modal-close-color
+      content: ''
+      display: block
+      margin: -3px 0 0 -1px
+    &:hover:after,
+    &:hover:before
+      background: darken($modal-close-color, 10)
+    &:before
+      @include transform(rotate(-45deg))
+
+  // modal
+  .modal-inner
+    @include transition(opacity .25s ease)
+    border-radius: $base-border-radius
+    background: $modal-background
+    margin: auto
+    max-height: 95%
+    position: relative
+    overflow: auto
+    width: 95%
+    padding: $modal-padding /2
+    margin-top: .6em
+
+    @include media($medium-screen)
+      padding: $modal-padding
+      width: 60%
+      max-height: 60%
+      margin-top: 10em
+
+    @include media($large-screen)
+      width: 50%
+      margin-top: 10em
+
+    h1
+      color: $base-font-color
+      margin-bottom: .6em
+      text-align: left
+      text-transform: capitalize
+    p.body,
+    p.intro
+      font-size: $base-font-size
+      max-width: 100% !important
+      text-align: left
+      &.intro
+        color: $blue
+        line-height: 1.6em
+      &.body
+        color: $base-font-color
+        line-height: 1.45em
+
+        @include media($medium-screen)
+          @include columns(2 8em)
+
+
+  input[type="checkbox"]
+    display: none
+
+  .modal-state:checked + .modal-window
+    opacity: 1
+    visibility: visible
+
+  .modal-state:checked + .modal-window .modal-inner
+    top: 0

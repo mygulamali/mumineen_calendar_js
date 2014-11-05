@@ -1,5 +1,8 @@
 /** @jsx React.DOM */
 var CalendarFrame = React.createClass({
+  statics: {
+    modalId: "modal"
+  },
   getInitialState: function () {
     return {
       calendar: new HijriCalendar(this.props.today.getYear(), this.props.today.getMonth())
@@ -20,6 +23,9 @@ var CalendarFrame = React.createClass({
       calendar: (yearChange < 0) ? this.state.calendar.previousYear() : this.state.calendar.nextYear()
     });
   },
+  showModal: function () {
+    document.getElementById(CalendarFrame.modalId).getElementsByTagName("input").item(0).checked = true;
+  },
   render: function () {
     return (
       <div className="calendar-frame">
@@ -36,7 +42,8 @@ var CalendarFrame = React.createClass({
             onMonthChange={this.changeMonth}
           />
         </div>
-        <Calendar calendar={this.state.calendar} today={this.props.today} />
+        <Calendar calendar={this.state.calendar} today={this.props.today} modalId={CalendarFrame.modalId} onDayClick={this.showModal} />
+        <Modal modalId={CalendarFrame.modalId} />
       </div>
     );
   }

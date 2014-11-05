@@ -2,11 +2,12 @@
 var Calendar = React.createClass({
   weeks: function () {
     var key = -1,
-        today = this.props.today;
+        today = this.props.today,
+        onDayClick = this.props.onDayClick;
     return Lazy(this.props.calendar.weeks()).map(function (week) {
       key += 1;
       return (
-        <CalendarWeek key={key} week={week} today={today} />
+        <CalendarWeek key={key} week={week} today={today} onDayClick={onDayClick} />
       );
     }).toArray();
   },
