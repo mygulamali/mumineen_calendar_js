@@ -3,6 +3,14 @@
   $modal-background: $base-background-color
   $modal-close-color: $light-gray
 
+  input[type="checkbox"]
+    display: none
+    &:checked + .modal-window
+      opacity: 1
+      visibility: visible
+    &:checked + .modal-window .modal-inner
+      top: 0
+
   // overlay
   .modal-window
     @include transition(opacity .25s ease)
@@ -12,9 +20,6 @@
     text-align: left
     visibility: hidden
     z-index: 99999999999
-    .modal-bg
-      @include position(absolute, 0px 0px 0px 0px)
-      cursor: pointer
 
   // close button
   .modal-close
@@ -40,53 +45,46 @@
   // modal
   .modal-inner
     @include transition(opacity .25s ease)
-    border-radius: $base-border-radius
-    background: $modal-background
-    margin: auto
-    max-height: 95%
     position: relative
+    border-radius: $base-border-radius
     overflow: auto
     width: 95%
-    padding: $modal-padding /2
+    margin: auto
     margin-top: .6em
+    padding: 0.5 * $modal-padding
+    background: $modal-background
+    text-align: center
 
     @include media($medium-screen)
       padding: $modal-padding
-      width: 60%
-      max-height: 60%
-      margin-top: 10em
+      width: 75%
+      max-height: 75%
+      margin-top: 6em
 
     @include media($large-screen)
-      width: 50%
+      width: 60%
       margin-top: 10em
 
-    h1
-      color: $base-font-color
-      margin-bottom: .6em
-      text-align: left
-      text-transform: capitalize
-    p.body,
-    p.intro
-      font-size: $base-font-size
-      max-width: 100% !important
-      text-align: left
-      &.intro
-        color: $blue
-        line-height: 1.6em
-      &.body
-        color: $base-font-color
-        line-height: 1.45em
 
-        @include media($medium-screen)
-          @include columns(2 8em)
+    h3
+      margin-top: 2em
+      font-size: 1em
+
+      @include media($medium-screen)
+        margin-top: 0.5em
+        font-size: 1.5em
+
+      @include media($large-screen)
+        font-size: 1.75em
 
 
-  input[type="checkbox"]
-    display: none
+    h4
+      font:
+        size: 1em
+        weight: normal
 
-  .modal-state:checked + .modal-window
-    opacity: 1
-    visibility: visible
+      @include media($medium-screen)
+        font-size: 1.5em
 
-  .modal-state:checked + .modal-window .modal-inner
-    top: 0
+      @include media($large-screen)
+        font-size: 1.75em

@@ -1,5 +1,17 @@
 /** @jsx React.DOM */
 var Modal = React.createClass({
+  hijriDateString: function () {
+    if (this.props.day && this.props.day.hijri) {
+      var day = this.props.day.hijri;
+      return day.date.toString() + " " + HijriDate.getMonthName(day.month) + " " + day.year.toString() + "H";
+    }
+  },
+  gregorianDateString: function () {
+    if (this.props.day && this.props.day.gregorian) {
+      var day = this.props.day.gregorian;
+      return day.date.toString() + " " + Date.getMonthName(day.month) + " " + day.year.toString() + "AD";
+    }
+  },
   render: function () {
     return (
       <div className="modal" id={this.props.modalId}>
@@ -7,9 +19,8 @@ var Modal = React.createClass({
         <div className="modal-window">
           <div className="modal-inner">
             <label className="modal-close" htmlFor="modal-checkbox"></label>
-            <h1>Modal Title</h1>
-            <p className="intro">Intro text lorem ipsum dolor sit ametm, quas, eaque facilis aliquid cupiditate tempora cumque ipsum accusantium illo modi commodi  minima.</p>
-            <p className="body">Body text lorem ipsum dolor ipsum dolor sit sit possimus amet, consectetur adipisicing elit. Itaque, placeat, explicabo, veniam quos aperiam molestias eriam molestias molestiae suscipit ipsum enim quasi sit possimus quod atque nobis voluptas earum odit accusamus quibusdam.</p>
+            <h3>{this.hijriDateString()}</h3>
+            <h4>{this.gregorianDateString()}</h4>
           </div>
         </div>
       </div>
