@@ -63,7 +63,7 @@
 
         it("expects to return a single list item with an appropriate message", function () {
           expect(instance.list()).toEqual(
-            <li>There are no miqaats on this day.</li>
+            <li className="none">There are no miqaats on this day.</li>
           );
         });
       });

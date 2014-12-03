@@ -35,18 +35,16 @@ var MiqaatList = React.createClass({
         }).toArray();
       } else {
         return (
-          <li>There are no miqaats on this day.</li>
+          <li className="none">There are no miqaats on this day.</li>
         );
       }
     }
   },
   render: function () {
     return (
-      <div>
-        <ul>
-          {this.list()}
-        </ul>
-      </div>
+      <ul className="miqaat-list">
+        {this.list()}
+      </ul>
     )
   }
 });

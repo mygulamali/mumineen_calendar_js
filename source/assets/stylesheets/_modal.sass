@@ -45,25 +45,25 @@
   // modal
   .modal-inner
     @include transition(opacity .25s ease)
-    position: relative
+    @include position(absolute, 50% null null 50%)
+    @include transform(translate(-50%, 2.5%))
     border-radius: $base-border-radius
-    overflow: auto
     width: 95%
-    margin: auto
-    margin-top: .6em
+    height: 95%
     padding: 0.5 * $modal-padding
     background: $modal-background
     text-align: center
 
     @include media($medium-screen)
+      @include transform(translate(-50%, 10%))
+      width: 80%
+      height: 80%
       padding: $modal-padding
-      width: 75%
-      max-height: 75%
-      margin-top: 6em
 
     @include media($large-screen)
-      width: 60%
-      margin-top: 10em
+      @include transform(translate(-50%, 50%))
+      width: 80%
+      height: 50%
 
 
     h3
