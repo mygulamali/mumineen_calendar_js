@@ -48,9 +48,11 @@ var MiqaatList = React.createClass({
   },
   render: function () {
     return (
-      <ul className="miqaat-list">
-        {this.listItems()}
-      </ul>
+      <div className="miqaat-list">
+        <ul className="miqaats">
+          {this.listItems()}
+        </ul>
+      </div>
     )
   }
 });
