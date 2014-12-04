@@ -40,7 +40,7 @@
       jasmine.Ajax.uninstall();
     });
 
-    describe("list", function () {
+    describe("listItems", function () {
       describe("when there are no miqaats on the specified Hijri day", function () {
         var day,
             request;
@@ -62,7 +62,7 @@
         });
 
         it("expects to return a single list item with an appropriate message", function () {
-          expect(instance.list()).toEqual(
+          expect(instance.listItems()).toEqual(
             <li className="none">There are no miqaats on this day.</li>
           );
         });
@@ -89,7 +89,7 @@
         });
 
         it("expects to return a list of miqaats", function () {
-          expect(instance.list().length).toEqual(2);
+          expect(instance.listItems().length).toEqual(2);
         });
       });
     });

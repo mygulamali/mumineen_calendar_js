@@ -21,7 +21,7 @@ var MiqaatList = React.createClass({
     request.send();
     request = null;
   },
-  list: function () {
+  listItems: function () {
     if (this.props.day && this.state.data) {
       var datum = Lazy(this.state.data).findWhere({
         date: this.props.day.hijri.date,
@@ -43,7 +43,7 @@ var MiqaatList = React.createClass({
   render: function () {
     return (
       <ul className="miqaat-list">
-        {this.list()}
+        {this.listItems()}
       </ul>
     )
   }
