@@ -116,7 +116,16 @@
         });
 
         it("expects to return a list of miqaats", function () {
-          expect(instance.listItems().length).toEqual(2);
+          expect(instance.listItems()).toEqual([
+            <li key="Hijri New Year">
+              Hijri New Year<br />
+              <span className="description">{null}</span>
+            </li>,
+            <li key="Another miqaat">
+              Another miqaat<br />
+              <span className="description">A description</span>
+            </li>
+          ]);
         });
       });
 
@@ -141,7 +150,12 @@
         });
 
         it("expects to return only the miqaats that have already occured", function () {
-          expect(instance.listItems().length).toEqual(1);
+          expect(instance.listItems()).toEqual([
+            <li key="Hijri New Year">
+              Hijri New Year<br />
+              <span className="description">{null}</span>
+            </li>
+          ]);
         });
       });
     });
