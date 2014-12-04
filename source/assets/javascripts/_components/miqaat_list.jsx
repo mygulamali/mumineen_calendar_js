@@ -33,7 +33,10 @@ var MiqaatList = React.createClass({
         month: this.props.day.hijri.month
       }).pluck('miqaats').flatten().map(function (miqaat) {
         return (
-          <li key={miqaat.title}>{miqaat.title}</li>
+          <li key={miqaat.title}>
+            {miqaat.title}<br />
+            <span className="description">{miqaat.description}</span>
+          </li>
         );
       }).toArray();
     }
