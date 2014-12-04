@@ -11,7 +11,7 @@ var MiqaatList = React.createClass({
     request.open('GET', '/data/miqaats.json', true);
     request.onreadystatechange = function() {
       if (this.readyState === this.DONE){
-        if (this.status >= 200 && this.status < 400){
+        if (this.status >= 200 && this.status < 400) {
           self.setState({data: JSON.parse(this.responseText)});
         } else {
           console.log(this);
@@ -22,23 +22,26 @@ var MiqaatList = React.createClass({
     request = null;
   },
   listItems: function () {
-    if (this.props.day && this.state.data) {
-      var datum = Lazy(this.state.data).findWhere({
+    var items = [];
+    if (this.state.data.length < 1)
+      return (
+        <li className="error">Sorry, there was a problem loading the miqaat data...</li>
+      );
+    if (this.props.day) {
+      items = Lazy(this.state.data).filter({
         date: this.props.day.hijri.date,
         month: this.props.day.hijri.month
-      });
-      if (datum) {
-        return Lazy(datum.miqaats).map(function (miqaat) {
-          return (
-            <li key={miqaat.title}>{miqaat.title}</li>
-          );
-        }).toArray();
-      } else {
+      }).pluck('miqaats').flatten().map(function (miqaat) {
         return (
-          <li className="none">There are no miqaats on this day.</li>
+          <li key={miqaat.title}>{miqaat.title}</li>
         );
-      }
+      }).toArray();
     }
+    if (items.length < 1)
+      return (
+        <li className="none">There are no miqaats on this day.</li>
+      );
+    return items;
   },
   render: function () {
     return (

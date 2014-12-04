@@ -41,6 +41,33 @@
     });
 
     describe("listItems", function () {
+      describe("when the miqaat data hasn't loaded", function () {
+        var day,
+        request;
+
+        beforeEach(function () {
+          day = {
+            hijri: {
+              date: 1,
+              month: 0,
+              year: null
+            }
+          };
+          instance = TestUtils.renderIntoDocument(<MiqaatList day={day} />);
+          request = jasmine.Ajax.requests.mostRecent();
+          request.respondWith({
+            status: 404,
+            responseText: ""
+          });
+        });
+
+        it("expects to return a single list item with an error message", function () {
+          expect(instance.listItems()).toEqual(
+            <li className="error">Sorry, there was a problem loading the miqaat data...</li>
+          );
+        });
+      });
+
       describe("when there are no miqaats on the specified Hijri day", function () {
         var day,
             request;
