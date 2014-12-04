@@ -22,23 +22,27 @@ var MiqaatList = React.createClass({
     request = null;
   },
   listItems: function () {
-    var items = [];
+    var items = [],
+        day;
     if (this.state.data.length < 1)
       return (
         <li className="error">Sorry, there was a problem loading the miqaat data...</li>
       );
     if (this.props.day) {
+      day = this.props.day.hijri;
       items = Lazy(this.state.data).filter({
-        date: this.props.day.hijri.date,
-        month: this.props.day.hijri.month
+        date: day.date,
+        month: day.month
       }).pluck('miqaats').flatten().map(function (miqaat) {
+        if (miqaat.year && miqaat.year > day.year)
+          return null;
         return (
           <li key={miqaat.title}>
             {miqaat.title}<br />
             <span className="description">{miqaat.description}</span>
           </li>
         );
-      }).toArray();
+      }).compact().toArray();
     }
     if (items.length < 1)
       return (

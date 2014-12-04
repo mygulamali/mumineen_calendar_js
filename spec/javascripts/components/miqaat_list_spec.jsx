@@ -24,7 +24,7 @@
               "description": "A description",
               "phase": "day",
               "priority": 3,
-              "year": null
+              "year": 1435
             }
           ]
         }
@@ -50,7 +50,7 @@
             hijri: {
               date: 1,
               month: 0,
-              year: null
+              year: 1435
             }
           };
           instance = TestUtils.renderIntoDocument(<MiqaatList day={day} />);
@@ -77,7 +77,7 @@
             hijri: {
               date: 2,
               month: 0,
-              year: null
+              year: 1435
             }
           };
           instance = TestUtils.renderIntoDocument(<MiqaatList day={day} />);
@@ -104,7 +104,7 @@
             hijri: {
               date: 1,
               month: 0,
-              year: null
+              year: 1435
             }
           };
           instance = TestUtils.renderIntoDocument(<MiqaatList day={day} />);
@@ -117,6 +117,31 @@
 
         it("expects to return a list of miqaats", function () {
           expect(instance.listItems().length).toEqual(2);
+        });
+      });
+
+      describe("when there is a miqaat that began after the specified Hijri day", function () {
+        var day,
+        request;
+
+        beforeEach(function () {
+          day = {
+            hijri: {
+              date: 1,
+              month: 0,
+              year: 1434
+            }
+          };
+          instance = TestUtils.renderIntoDocument(<MiqaatList day={day} />);
+          request = jasmine.Ajax.requests.mostRecent();
+          request.respondWith({
+            status: 200,
+            responseText: JSON.stringify(mockMiqaats)
+          });
+        });
+
+        it("expects to return only the miqaats that have already occured", function () {
+          expect(instance.listItems().length).toEqual(1);
         });
       });
     });
