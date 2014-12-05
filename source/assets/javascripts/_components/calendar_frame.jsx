@@ -62,7 +62,8 @@ var CalendarFrame = React.createClass({
             onMonthChange={this.changeMonth}
           />
         </div>
-        <Calendar calendar={this.state.calendar} today={this.props.today} modalId={CalendarFrame.modalId} onDayClick={this.showModal} />
+        <Calendar
+          calendar={this.state.calendar} today={this.props.today} modalId={CalendarFrame.modalId} miqaats={this.state.miqaats} onDayClick={this.showModal} />
         <Modal modalId={CalendarFrame.modalId} miqaats={this.state.miqaats} day={this.state.day} />
       </div>
     );

@@ -1,13 +1,17 @@
 /** @jsx React.DOM */
 var Calendar = React.createClass({
+  miqaats: function () {
+    return Lazy(this.props.miqaats).filter({month: this.props.calendar.getMonth()}).toArray();
+  },
   weeks: function () {
     var key = -1,
         today = this.props.today,
+        miqaats = this.miqaats(),
         onDayClick = this.props.onDayClick;
     return Lazy(this.props.calendar.weeks()).map(function (week) {
       key += 1;
       return (
-        <CalendarWeek key={key} week={week} today={today} onDayClick={onDayClick} />
+        <CalendarWeek key={key} week={week} today={today} miqaats={miqaats} onDayClick={onDayClick} />
       );
     }).toArray();
   },
