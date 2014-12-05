@@ -1,36 +1,15 @@
 /** @jsx React.DOM */
 var MiqaatList = React.createClass({
-  getInitialState: function () {
-    return {
-      data: []
-    };
-  },
-  componentDidMount: function () {
-    var request = new XMLHttpRequest(),
-        self = this;
-    request.open('GET', '/data/miqaats.json', true);
-    request.onreadystatechange = function() {
-      if (this.readyState === this.DONE){
-        if (this.status >= 200 && this.status < 400) {
-          self.setState({data: JSON.parse(this.responseText)});
-        } else {
-          console.log(this);
-        }
-      }
-    };
-    request.send();
-    request = null;
-  },
   listItems: function () {
     var items = [],
         day;
-    if (this.state.data.length < 1)
+    if (this.props.miqaats.length < 1)
       return (
         <li className="error">Sorry, there was a problem loading the miqaat data...</li>
       );
     if (this.props.day) {
       day = this.props.day.hijri;
-      items = Lazy(this.state.data).filter({
+      items = Lazy(this.props.miqaats).filter({
         date: day.date,
         month: day.month
       }).pluck('miqaats').flatten().map(function (miqaat) {

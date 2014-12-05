@@ -29,15 +29,12 @@
           ]
         }
       ];
-
-      jasmine.Ajax.install();
     });
 
     afterEach(function () {
       if (instance && instance.isMounted()) {
         instance.unmountComponent();
       }
-      jasmine.Ajax.uninstall();
     });
 
     describe("listItems", function () {
@@ -53,12 +50,7 @@
               year: 1435
             }
           };
-          instance = TestUtils.renderIntoDocument(<MiqaatList day={day} />);
-          request = jasmine.Ajax.requests.mostRecent();
-          request.respondWith({
-            status: 404,
-            responseText: ""
-          });
+          instance = TestUtils.renderIntoDocument(<MiqaatList day={day} miqaats={[]} />);
         });
 
         it("expects to return a single list item with an error message", function () {
@@ -80,12 +72,7 @@
               year: 1435
             }
           };
-          instance = TestUtils.renderIntoDocument(<MiqaatList day={day} />);
-          request = jasmine.Ajax.requests.mostRecent();
-          request.respondWith({
-            status: 200,
-            responseText: JSON.stringify(mockMiqaats)
-          });
+          instance = TestUtils.renderIntoDocument(<MiqaatList day={day} miqaats={mockMiqaats} />);
         });
 
         it("expects to return a single list item with an appropriate message", function () {
@@ -107,12 +94,7 @@
               year: 1435
             }
           };
-          instance = TestUtils.renderIntoDocument(<MiqaatList day={day} />);
-          request = jasmine.Ajax.requests.mostRecent();
-          request.respondWith({
-            status: 200,
-            responseText: JSON.stringify(mockMiqaats)
-          });
+          instance = TestUtils.renderIntoDocument(<MiqaatList day={day} miqaats={mockMiqaats} />);
         });
 
         it("expects to return a list of miqaats", function () {
@@ -141,12 +123,7 @@
               year: 1434
             }
           };
-          instance = TestUtils.renderIntoDocument(<MiqaatList day={day} />);
-          request = jasmine.Ajax.requests.mostRecent();
-          request.respondWith({
-            status: 200,
-            responseText: JSON.stringify(mockMiqaats)
-          });
+          instance = TestUtils.renderIntoDocument(<MiqaatList day={day} miqaats={mockMiqaats} />);
         });
 
         it("expects to return only the miqaats that have already occured", function () {
