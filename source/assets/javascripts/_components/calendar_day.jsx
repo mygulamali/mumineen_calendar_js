@@ -7,11 +7,22 @@ var CalendarDay = React.createClass({
       (this.props.day.hijri.date === this.props.today.getDate())
     );
   },
-  className: function () {
+  dayClassName: function () {
     return React.addons.classSet({
       "day": !this.props.day.filler,
       "filler": this.props.day.filler,
       "today": this.isToday()
+    });
+  },
+  iconClassName: function () {
+    var miqaatsForDay = Lazy(this.props.miqaats).findWhere({date: this.props.day.hijri.date}),
+        firstMiqaat;
+    if (!miqaatsForDay || this.props.day.filler) return null;
+    firstMiqaat = miqaatsForDay.miqaats[0];
+    return React.addons.classSet({
+      "icon-sun": (firstMiqaat.priority === 1 && firstMiqaat.phase === 'day'),
+      "icon-moon": (firstMiqaat.priority === 1 && firstMiqaat.phase === 'night'),
+      "icon-circle": (firstMiqaat.priority != 1)
     });
   },
   hijriDateString: function () {
@@ -38,12 +49,15 @@ var CalendarDay = React.createClass({
   },
   render: function () {
     return (
-      <td className={this.className()} onClick={this.onDayClick.bind(null, this.props.day)}>
+      <td className={this.dayClassName()} onClick={this.onDayClick.bind(null, this.props.day)}>
         <div className="hijri">
           {this.hijriDateString()}
         </div>
         <div className="gregorian">
           {this.gregorianDateString()}
+        </div>
+        <div className="day-icon">
+          <i className={this.iconClassName()}></i>
         </div>
       </td>
     );
