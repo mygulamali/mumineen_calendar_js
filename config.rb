@@ -61,10 +61,10 @@ ignore 'assets/javascripts/app.jsx'
 activate :react
 
 activate :deploy do |deploy|
-  deploy.method = :sftp
+  deploy.method = :rsync
   deploy.host = 'mumineencalendar.com'
-  deploy.port = 22
   deploy.path = '/home/public'
+  deploy.clean = true
   deploy.build_before = true
 end
 
@@ -75,7 +75,7 @@ configure :build do
   activate :asset_hash
 
   # Use relative URLs
-  #activate :relative_assets
+  # activate :relative_assets
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
