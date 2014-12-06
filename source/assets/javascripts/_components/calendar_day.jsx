@@ -16,13 +16,15 @@ var CalendarDay = React.createClass({
   },
   iconClassName: function () {
     var day = this.props.day,
-        miqaatsForDay = Lazy(this.props.miqaats).findWhere({date: day.hijri.date}),
-        firstMiqaat;
-    if (!miqaatsForDay || day.filler) return null;
-    firstMiqaat = Lazy(miqaatsForDay.miqaats).filter(function (miqaat) {
-      return miqaat.year ? (miqaat.year <= day.hijri.year) : true;
-    }).first();
-    if (!firstMiqaat) return null;
+        firstMiqaat = Lazy(this.props.miqaats)
+          .filter({date: day.hijri.date})
+          .pluck('miqaats')
+          .flatten()
+          .filter(function (miqaat) {
+            return miqaat.year ? (miqaat.year <= day.hijri.year) : true;
+          }).first();
+
+    if (!firstMiqaat || day.filler) return null;
     return React.addons.classSet({
       "icon-sun": (firstMiqaat.priority === 1 && firstMiqaat.phase === 'day'),
       "icon-moon": (firstMiqaat.priority === 1 && firstMiqaat.phase === 'night'),
