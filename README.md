@@ -12,7 +12,7 @@ This version is primarily written in JavaScript using [React](http://facebook.gi
 git clone git@github.com:mygulamali/mumineen_calendar_js
 cd mumineen_calendar_js
 bundle install
-cd source/stylesheets
+cd source/assets/stylesheets
 bundle exec bourbon install
 bundle exec neat install
 ```
