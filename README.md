@@ -23,6 +23,12 @@ bundle exec neat install
 
 Then visit `http://localhost:4567` to see the site in action.
 
+## Deploy to your web server
+
+`bundle exec middleman deploy`
+
+NB. The configuration file assumes that the SFTP login parameters for your wer server are already setup in you SSH config file (ie. `$HOME/.ssh/config`).
+
 ## Testing
 
 After starting the local server (see above), visit `http://localhost:4567/jasmine` to run the [Jasmine](http://jasmine.github.io/) specs.
