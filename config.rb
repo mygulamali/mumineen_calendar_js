@@ -60,6 +60,13 @@ ignore 'assets/javascripts/app.jsx'
 
 activate :react
 
+activate :google_analytics do |ga|
+  ga.tracking_id = 'UA-37589699-1'
+  ga.domain_name = 'mumineencalendar.com'
+  ga.development = false
+  ga.minify = true
+end
+
 activate :deploy do |deploy|
   deploy.method = :rsync
   deploy.host = 'mumineencalendar.com'
