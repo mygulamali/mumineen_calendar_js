@@ -56,6 +56,8 @@ set :images_dir, 'assets/images'
 set :js_dir, 'assets/javascripts'
 set :fonts_dir, 'assets/fonts'
 
+ignore 'assets/javascripts/app.jsx'
+
 activate :react
 
 activate :deploy do |deploy|
