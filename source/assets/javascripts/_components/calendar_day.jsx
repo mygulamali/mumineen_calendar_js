@@ -15,14 +15,18 @@ var CalendarDay = React.createClass({
     });
   },
   iconClassName: function () {
-    var miqaatsForDay = Lazy(this.props.miqaats).findWhere({date: this.props.day.hijri.date}),
+    var day = this.props.day,
+        miqaatsForDay = Lazy(this.props.miqaats).findWhere({date: day.hijri.date}),
         firstMiqaat;
-    if (!miqaatsForDay || this.props.day.filler) return null;
-    firstMiqaat = miqaatsForDay.miqaats[0];
+    if (!miqaatsForDay || day.filler) return null;
+    firstMiqaat = Lazy(miqaatsForDay.miqaats).filter(function (miqaat) {
+      return miqaat.year ? (miqaat.year <= day.hijri.year) : true;
+    }).first();
+    if (!firstMiqaat) return null;
     return React.addons.classSet({
       "icon-sun": (firstMiqaat.priority === 1 && firstMiqaat.phase === 'day'),
       "icon-moon": (firstMiqaat.priority === 1 && firstMiqaat.phase === 'night'),
-      "icon-circle": (firstMiqaat.priority != 1)
+      "icon-circle": (firstMiqaat.priority > 1)
     });
   },
   hijriDateString: function () {
