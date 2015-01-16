@@ -20,7 +20,7 @@ var Modal = React.createClass({
             <label className="modal-close" htmlFor="modal-checkbox"></label>
             <h3>{this.hijriDateString()}</h3>
             <h4>{this.gregorianDateString()}</h4>
-            <MiqaatList day={this.props.day} miqaats={this.props.miqaats} />
+            <MiqaatList {...this.props} />
           </div>
         </div>
       </div>
