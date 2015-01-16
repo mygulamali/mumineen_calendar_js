@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var CalendarFrame = React.createClass({
   statics: {
     modalId: "modal",

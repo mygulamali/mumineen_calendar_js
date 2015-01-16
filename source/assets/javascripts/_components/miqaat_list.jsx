@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var MiqaatList = React.createClass({
   listItems: function () {
     var items = [],

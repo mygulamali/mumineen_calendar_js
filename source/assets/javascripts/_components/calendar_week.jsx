@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var CalendarWeek = React.createClass({
   days: function () {
     var today = this.props.today,

@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var MonthControls = React.createClass({
   render: function () {
     return (

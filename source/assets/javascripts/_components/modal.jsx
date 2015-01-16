@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var Modal = React.createClass({
   hijriDateString: function () {
     if (this.props.day && this.props.day.hijri) {

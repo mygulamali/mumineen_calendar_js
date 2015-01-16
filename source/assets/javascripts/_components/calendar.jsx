@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var Calendar = React.createClass({
   miqaats: function () {
     return Lazy(this.props.miqaats).filter({month: this.props.calendar.getMonth()}).toArray();

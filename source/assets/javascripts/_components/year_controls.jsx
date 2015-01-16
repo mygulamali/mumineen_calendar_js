@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var YearControls = React.createClass({
   render: function () {
     return (

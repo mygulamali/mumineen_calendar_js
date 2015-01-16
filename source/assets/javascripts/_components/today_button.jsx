@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var TodayButton = React.createClass({
   render: function () {
     return (

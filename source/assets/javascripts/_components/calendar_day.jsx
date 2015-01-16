@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var CalendarDay = React.createClass({
   isToday: function () {
     return (
