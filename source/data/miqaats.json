@@ -1734,6 +1734,19 @@
   },
   {
     "month": 8,
+    "date": 23,
+    "miqaats": [
+      {
+        "title": "Milad Dai az-Zamaan, Syedna Mufaddal Saifuddin (TUS)",
+        "description": "53rd Dai al-Mutlaq",
+        "phase": "day",
+        "priority": 1,
+        "year": null
+      }
+    ]
+  },
+  {
+    "month": 8,
     "date": 29,
     "miqaats": [
       {
