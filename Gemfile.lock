@@ -54,7 +54,7 @@ GEM
       rack (>= 1.2.1)
       rake
     jasmine-core (2.0.2)
-    json (1.8.2)
+    json (1.8.6)
     kramdown (1.5.0)
     listen (2.8.5)
       celluloid (>= 0.15.2)
@@ -171,3 +171,9 @@ DEPENDENCIES
   neat
   tzinfo-data
   wdm (~> 0.1.0)
+
+RUBY VERSION
+   ruby 2.4.1p111
+
+BUNDLED WITH
+   1.14.6
