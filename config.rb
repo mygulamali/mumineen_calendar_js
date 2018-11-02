@@ -68,9 +68,7 @@ activate :google_analytics do |ga|
 end
 
 activate :deploy do |deploy|
-  deploy.method = :rsync
-  deploy.host = 'mumineencalendar.com'
-  deploy.path = '/home/public'
+  deploy.method = :git
   deploy.clean = true
   deploy.build_before = true
 end
