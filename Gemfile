@@ -1,6 +1,3 @@
-source 'https://rubygems.org'
-
-ruby '2.6.0'
 gem "middleman", "~>3.3.6"
 
 gem "bitters"
