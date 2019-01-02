@@ -11,8 +11,3 @@ gem "neat"
 group :development do
   gem "middleman-livereload", "~> 3.1.0"
 end
-
-platforms :mswin, :mingw do
-  gem "wdm", "~> 0.1.0"
-  gem "tzinfo-data"
-end
