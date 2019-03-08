@@ -23,3 +23,6 @@
 # Ignore vendor style files
 /source/assets/stylesheets/bourbon
 /source/assets/stylesheets/neat
+
+# Ignore .env
+.env
