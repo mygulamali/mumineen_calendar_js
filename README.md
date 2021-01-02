@@ -29,7 +29,10 @@ cd source/assets/stylesheets
 bundle exec bourbon install
 bundle exec neat install
 ```
-Then complete the variables in the `.env` file for you environment.
+
+Then complete the variables in the `.env` file for you environment.  The current
+values can be found in the _Build & deploy_ section under the _Site settings_
+tab for the website, on Netlify.
 
 ## Serve on your localhost
 
