@@ -16,6 +16,15 @@
     <%= stylesheet_link_tag "normalize", "all" %>
 
     <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<%= config[:tracking_id] %>"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '<%= config[:tracking_id] %>');
+    </script>
   </head>
 
   <body class="<%= page_classes %>">

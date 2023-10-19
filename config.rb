@@ -23,6 +23,7 @@ configure :build do
   activate :minify_css
   activate :minify_javascript
   activate :asset_hash
+  config[:tracking_id] = ENV.fetch("GA4_TRACKING_ID", "")
 end
 
 after_configuration do
