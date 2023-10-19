@@ -13,13 +13,6 @@ ignore "assets/javascripts/app.jsx"
 
 activate :react
 
-activate :google_analytics do |ga|
-  ga.domain_name = ENV.fetch("GA_DOMAIN_NAME")
-  ga.tracking_id = ENV.fetch("GA_TRACKING_ID")
-  ga.development = false
-  ga.minify = true
-end
-
 activate :deploy do |deploy|
   deploy.method = :git
   deploy.clean = true
