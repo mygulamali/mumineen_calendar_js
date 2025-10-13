@@ -40,6 +40,15 @@ tab for the website, on Netlify.
 
 Then visit `http://localhost:4567` to see the site in action.
 
+### Subscribe to the calendar
+
+An iCalendar feed is generated at `/calendar.ics`. Use the absolute URL of that
+file (for example, `https://<your-domain>/calendar.ics`) to subscribe from your
+phone or desktop calendar application. The feed includes miqaats from one year
+in the past through five years in the future relative to the current Hijri
+year, and it will update automatically each time the site is rebuilt and
+deployed.
+
 ## Deploy to your web server
 
 `bundle exec middleman deploy`
